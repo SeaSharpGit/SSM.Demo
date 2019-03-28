@@ -17,15 +17,219 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <aspectjweaver.version>1.9.2</aspectjweaver.version>
+
+    <!--javaee版本-->
+    <!--<javaee.version>8.0</javaee.version>-->
+    <!-- spring版本号 -->
+    <spring.version>5.1.5.RELEASE</spring.version>
+    <!--log4j版本号-->
+    <!--<log4j.version>2.10.0</log4j.version>-->
+    <!--&lt;!&ndash;mybatis&ndash;&gt;-->
+    <!--<mybatis.version>3.4.5</mybatis.version>-->
+    <!--<mybatis-spring.version>1.3.1</mybatis-spring.version>-->
+    <!--apache-->
+    <!--<apahe-poi.version>3.17</apahe-poi.version>-->
+    <!--<commons-dbcp2.version>2.2.0</commons-dbcp2.version>-->
+    <!--<commons-fileupload.version>1.3.3</commons-fileupload.version>-->
+    <!--<commons-io.version>2.6</commons-io.version>-->
+    <!--<commons-lang3.version>3.7</commons-lang3.version>-->
+    <!--<commons-pool2.version>2.5.0</commons-pool2.version>-->
+    <!--json解析器-->
+    <!--<jackson.version>2.9.4</jackson.version>-->
+    <!--junit5-->
+    <!--<junit4.version>4.12</junit4.version>-->
+    <!--servlet-->
+    <!--<javax.servlet.version>4.0.0</javax.servlet.version>-->
+    <!--<jstl.version>1.2</jstl.version>-->
+    <!--<taglibs-standard.version>1.2.5</taglibs-standard.version>-->
+
   </properties>
 
   <dependencies>
+    <!--aop-->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${aspectjweaver.version}</version>
     </dependency>
+
+
+    <!--<dependency>-->
+    <!--<groupId>javax</groupId>-->
+    <!--<artifactId>javaee-api</artifactId>-->
+    <!--<version>${javaee.version}</version>-->
+    <!--<scope>provided</scope>-->
+    <!--</dependency>-->
+    <!-- =============================================== servlet config ============================================ -->
+    <!--<dependency>-->
+    <!--<groupId>javax.servlet</groupId>-->
+    <!--<artifactId>javax.servlet-api</artifactId>-->
+    <!--<version>${javax.servlet.version}</version>-->
+    <!--<scope>provided</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>jstl</groupId>-->
+    <!--<artifactId>jstl</artifactId>-->
+    <!--<version>${jstl.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.apache.taglibs</groupId>-->
+    <!--<artifactId>taglibs-standard-impl</artifactId>-->
+    <!--<version>${taglibs-standard.version}</version>-->
+    <!--</dependency>-->
+    <!-- ================================================ log4j2 config ============================================ -->
+    <!--<dependency>-->
+    <!--<groupId>org.apache.logging.log4j</groupId>-->
+    <!--<artifactId>log4j-core</artifactId>-->
+    <!--<version>${log4j.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.apache.logging.log4j</groupId>-->
+    <!--<artifactId>log4j-slf4j-impl</artifactId>-->
+    <!--<version>${log4j.version}</version>-->
+    <!--</dependency>-->
+
+    <!-- ============================================== jackson config ============================================= -->
+    <!--<dependency>-->
+    <!--<groupId>com.fasterxml.jackson.core</groupId>-->
+    <!--<artifactId>jackson-databind</artifactId>-->
+    <!--<version>${jackson.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>com.fasterxml.jackson.core</groupId>-->
+    <!--<artifactId>jackson-core</artifactId>-->
+    <!--<version>${jackson.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>com.fasterxml.jackson.core</groupId>-->
+    <!--<artifactId>jackson-annotations</artifactId>-->
+    <!--<version>${jackson.version}</version>-->
+    <!--</dependency>-->
+
+    <!-- ============================================== spring config ============================================== -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!-- ============================================= junit5 config =============================================== -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>RELEASE</version>
+      <scope>compile</scope>
+    </dependency>
+    <!--<dependency>-->
+    <!--<groupId>org.junit.platform</groupId>-->
+    <!--<artifactId>junit-platform-launcher</artifactId>-->
+    <!--<version>${junit-platform-laubcher.version}</version>-->
+    <!--<scope>test</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.junit.jupiter</groupId>-->
+    <!--<artifactId>junit-jupiter-engine</artifactId>-->
+    <!--<version>${junit5.version}</version>-->
+    <!--<scope>test</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.junit.vintage</groupId>-->
+    <!--<artifactId>junit-vintage-engine</artifactId>-->
+    <!--<version>${junit5.version}</version>-->
+    <!--<scope>test</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>junit</groupId>-->
+    <!--<artifactId>junit</artifactId>-->
+    <!--<version>RELEASE</version>-->
+    <!--<scope>compile</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.junit.jupiter</groupId>-->
+    <!--<artifactId>junit-jupiter-api</artifactId>-->
+    <!--<version>RELEASE</version>-->
+    <!--<scope>compile</scope>-->
+    <!--</dependency>-->
+
+    <!-- ============================================ mybatis config =============================================== -->
+    <!--<dependency>-->
+    <!--<groupId>org.mybatis</groupId>-->
+    <!--<artifactId>mybatis</artifactId>-->
+    <!--<version>${mybatis.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.mybatis</groupId>-->
+    <!--<artifactId>mybatis-spring</artifactId>-->
+    <!--<version>${mybatis-spring.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>ojdbc</groupId>-->
+    <!--<artifactId>ojdbc7</artifactId>-->
+    <!--<version>${ojdbc.version}</version>-->
+    <!--</dependency>-->
+    <!-- ================================================= apache ================================================== -->
+    <!--<dependency>-->
+    <!--<groupId>org.apache.commons</groupId>-->
+    <!--<artifactId>commons-dbcp2</artifactId>-->
+    <!--<version>${commons-dbcp2.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.apache.commons</groupId>-->
+    <!--<artifactId>commons-fileupload</artifactId>-->
+    <!--<version>${commons-fileupload.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.apache.commons</groupId>-->
+    <!--<artifactId>commons-io</artifactId>-->
+    <!--<version>${commons-io.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.apache.commons</groupId>-->
+    <!--<artifactId>commons-lang3</artifactId>-->
+    <!--<version>${commons-lang3.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.apache.commons</groupId>-->
+    <!--<artifactId>commons-pool2</artifactId>-->
+    <!--<version>${commons-pool2.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.apache.poi</groupId>-->
+    <!--<artifactId>poi-ooxml</artifactId>-->
+    <!--<version>${apahe-poi.version}</version>-->
+    <!--</dependency>-->
+
   </dependencies>
 
   <build>
