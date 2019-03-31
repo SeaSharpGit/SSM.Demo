@@ -17,6 +17,8 @@ class RunTest {
         UserController userController=(UserController)applicationContext.getBean("userController");
         userController.Test();
 
+        ((FileSystemXmlApplicationContext) applicationContext).close();
+
     }
 
     public void Test5(int...v){
