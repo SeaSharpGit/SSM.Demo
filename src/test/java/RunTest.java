@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import javax.sql.DataSource;
+
 class RunTest {
 
     @Test
@@ -11,9 +13,8 @@ class RunTest {
         ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
 
         //加载jdbc
-        //DataSource ds=(DataSource)applicationContext.getBean("myJdbc");
-
-
+        DataSource ds=(DataSource)applicationContext.getBean("myJdbc");
+        
         UserController userController=(UserController)applicationContext.getBean("userController");
         userController.Test();
 
