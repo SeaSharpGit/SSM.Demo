@@ -19,12 +19,13 @@
 
     <bean id="baseAOP" class="com.ssm.aop.BaseAOP"/>
 
+
     <!--1.before2.方法转型3.afterreturning4.after-->
-    <aop:config>
-        <aop:pointcut id="myPointCut"  expression="execution(* com.ssm.controller.UserController.*(..))"/>
-        <aop:aspect id="myAspect" ref="baseAOP">
-            <aop:before method="before" pointcut-ref="myPointCut"/>
-        </aop:aspect>
-    </aop:config>
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="myPointCut"  expression="execution(* com.ssm.controller.UserController.*(..))"/>-->
+        <!--<aop:aspect id="myAspect" ref="baseAOP">-->
+            <!--<aop:before method="before" pointcut-ref="myPointCut"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
 
 </beans>

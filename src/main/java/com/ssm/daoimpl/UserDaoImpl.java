@@ -5,15 +5,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-@Component("userDao")
-public class UserDaoImpl implements UserDao {
-    @Value("1")
-    private int number;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
+@Repository("userDao")
+public class UserDaoImpl implements UserDao {
 
     @Override
     public void sayHello() {
-        System.out.println("我是UserRepository");
+        System.out.println("UserDaoImpl.sayHello");
     }
 
 }
