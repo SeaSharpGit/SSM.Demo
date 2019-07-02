@@ -11,21 +11,23 @@
        http://www.springframework.org/schema/aop/spring-aop.xsd"
        default-autowire="byName">
 
-    <!--自动装配-->
+    <!--开启注解IOC-->
     <context:component-scan base-package="com.*"/>
+
+    <!--开启注解AOP-->
+    <aop:aspectj-autoproxy/>
 
     <!--配置数据库-->
     <context:property-placeholder location="classpath:/db.properties"/>
 
-    <bean id="baseAOP" class="com.ssm.aop.BaseAOP"/>
 
 
     <!--1.before2.方法转型3.afterreturning4.after-->
-    <!--<aop:config>-->
-        <!--<aop:pointcut id="myPointCut"  expression="execution(* com.ssm.controller.UserController.*(..))"/>-->
-        <!--<aop:aspect id="myAspect" ref="baseAOP">-->
-            <!--<aop:before method="before" pointcut-ref="myPointCut"/>-->
-        <!--</aop:aspect>-->
-    <!--</aop:config>-->
+    <!--<aspect:config>-->
+        <!--<aspect:pointcut id="myPointCut"  expression="execution(* com.ssm.controller.UserController.*(..))"/>-->
+        <!--<aspect:aspect id="myAspect" ref="baseAOP">-->
+            <!--<aspect:before method="before" pointcut-ref="myPointCut"/>-->
+        <!--</aspect:aspect>-->
+    <!--</aspect:config>-->
 
 </beans>
