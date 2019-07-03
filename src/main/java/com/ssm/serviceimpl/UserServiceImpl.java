@@ -21,9 +21,9 @@ public class UserServiceImpl implements UserService{
     private UserDao userDao;
 
     @Override
-    public void sayHello() {
+    public String sayHello() {
         System.out.println("UserServiceImpl.sayHello");
-        userDao.sayHello();
+        return userDao.sayHello();
     }
 
     @PostConstruct

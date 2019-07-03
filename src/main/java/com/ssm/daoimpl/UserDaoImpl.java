@@ -12,8 +12,9 @@ import javax.annotation.PreDestroy;
 public class UserDaoImpl implements UserDao {
 
     @Override
-    public void sayHello() {
+    public String sayHello() {
         System.out.println("UserDaoImpl.sayHello");
+        return "Hello World!";
     }
 
 }
