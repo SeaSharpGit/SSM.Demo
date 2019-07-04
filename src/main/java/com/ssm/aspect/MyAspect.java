@@ -8,22 +8,25 @@ import org.springframework.stereotype.Component;
 @Component("myAspect")
 public class MyAspect {
 
-    @Before(value = "execution(* com.ssm.serviceimpl.UserServiceImpl.sayHello(..))")
+    @Pointcut(value = "execution(* com.ssm.serviceimpl.UserServiceImpl.sayHello(..))")
+    private void sayHelloPointCut(){}
+
+    @Before(value = "MyAspect.sayHelloPointCut()")
     public void before(){
         System.out.println("MyAspect.before");
     }
 
-    @After(value = "execution(* com.ssm.serviceimpl.UserServiceImpl.sayHello(..))")
+    @After(value = "MyAspect.sayHelloPointCut()")
     public void after(){
         System.out.println("MyAspect.after");
     }
 
-    @AfterReturning(value = "execution(* com.ssm.serviceimpl.UserServiceImpl.sayHello(..))",returning = "result")
+    @AfterReturning(value = "MyAspect.sayHelloPointCut()",returning = "result")
     public void afterReturning(Object result){
         System.out.println("MyAspect.afterReturning:"+result.toString());
     }
 
-    @Around(value = "execution(* com.ssm.serviceimpl.UserServiceImpl.sayHello(..))")
+    @Around(value = "MyAspect.sayHelloPointCut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("MyAspect环绕前");
         Object obj=joinPoint.proceed();
@@ -31,7 +34,7 @@ public class MyAspect {
         return obj;
     }
 
-    @AfterThrowing(value = "execution(* com.ssm.serviceimpl.UserServiceImpl.sayHello(..))",throwing = "ex")
+    @AfterThrowing(value = "MyAspect.sayHelloPointCut()",throwing = "ex")
     public void afterThrowing(Throwable ex){
         System.out.println("MyAspect.afterThrowing："+ex.getMessage());
     }
