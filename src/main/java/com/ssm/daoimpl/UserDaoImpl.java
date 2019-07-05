@@ -13,7 +13,6 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public String sayHello() {
-        System.out.println("UserDaoImpl.sayHello");
         return "Hello World!";
     }
 

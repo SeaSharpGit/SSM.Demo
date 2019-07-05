@@ -22,18 +22,17 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String sayHello() {
-        System.out.println("UserServiceImpl.sayHello");
         return userDao.sayHello();
     }
 
     @PostConstruct
     public void init(){
-        System.out.println("UserServiceImpl初始化");
+
     }
 
     @PreDestroy
     public void destroy(){
-        System.out.println("UserServiceImpl销毁");
+
     }
 
 }

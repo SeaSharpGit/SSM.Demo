@@ -27,5 +27,4 @@ public class AppConfig {
         return new DriverManagerDataSource(url,username,password);
     }
 
-
 }
