@@ -29,50 +29,37 @@ class RunTest {
         ((FileSystemXmlApplicationContext) applicationContext).close();
     }
 
-    //JDBC
+    //Connection、JDBC、DBCP、C3P0
     @Test
-    void Test2() {
-        try {
-            Properties properties=new Properties();
-            InputStream inputStream=this.getClass().getResourceAsStream("/db.properties");
-            properties.load(inputStream);
-            String url=properties.getProperty("url");
-            String username=properties.getProperty("username");
-            String password=properties.getProperty("password");
-            String driver=properties.getProperty("driver");
-            Class.forName(driver);
-            Connection connection=DriverManager.getConnection(url,username,password);
-            //新增
-            try(PreparedStatement ps=connection.prepareStatement("INSERT INTO User(UserName,Date) VALUES(?,?)");) {
-                ps.setString(1,"王海");
-                ps.setString(2,"2019-7-6");
-                ps.execute();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+    void Test2() throws SQLException {
+        ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
+
+        //Connection方式
+        Connection connection=(Connection)applicationContext.getBean("dbConnection");
+        try(PreparedStatement ps=connection.prepareStatement("INSERT INTO User(UserName,Date) VALUES(?,?)");) {
+            ps.setString(1,"王海2");
+            ps.setString(2,"2019-7-6");
+            ps.execute();
         }
+
+        //JDBC方式
+        JdbcTemplate jdbc=(JdbcTemplate)applicationContext.getBean("jdbcTemplate");
+        jdbc.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好5","2019-7-6");
+
+        //DBCP方式
+        JdbcTemplate dbcp=(JdbcTemplate)applicationContext.getBean("jdbcTemplate");
+        dbcp.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好6","2019-7-6");
+
+        //C3P0方式
+        JdbcTemplate c3p0=(JdbcTemplate)applicationContext.getBean("jdbcTemplate");
+        c3p0.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好7","2019-7-6");
     }
 
+    //
     @Test
-    void Test3() throws SQLException {
-        DriverManagerDataSource dataSource=new DriverManagerDataSource("jdbc:mysql://localhost:3306/Test","root","sa123456");
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        JdbcTemplate jdbc=new JdbcTemplate(dataSource);
-        jdbc.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好","2019-7-6");
+    void Test3() {
 
 
-        //加载Spring容器上下文
-        ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
-        //加载jdbc
-        DataSource ds=(DataSource)applicationContext.getBean("myJdbc");
-
-        DriverManagerDataSource ds2=(DriverManagerDataSource)applicationContext.getBean("myJdbc");
-
-        Connection con= ds.getConnection();
     }
 
 
