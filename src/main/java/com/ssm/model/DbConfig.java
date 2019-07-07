@@ -32,42 +32,9 @@ public class DbConfig {
     private String password;
 
     @Bean
-    public DataSource myJdbc(){
-
-        return new DriverManagerDataSource(url,username,password);
-    }
-
-    @Bean
     public Connection dbConnection() throws ClassNotFoundException, SQLException {
         Class.forName(driver);
         return DriverManager.getConnection(url,username,password);
-    }
-
-    @Bean
-    public JdbcTemplate jdbcTemplate() {
-        DriverManagerDataSource dataSource=new DriverManagerDataSource(url,username,password);
-        dataSource.setDriverClassName(driver);
-        return new JdbcTemplate(dataSource);
-    }
-
-    @Bean
-    public JdbcTemplate dbcpTemplate() {
-        BasicDataSource dataSource=new BasicDataSource();
-        dataSource.setDriverClassName(driver);
-        dataSource.setUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-        return new JdbcTemplate(dataSource);
-    }
-
-    @Bean
-    public JdbcTemplate c3p0Template() throws PropertyVetoException {
-        ComboPooledDataSource dataSource=new ComboPooledDataSource();
-        dataSource.setDriverClass(driver);
-        dataSource.setJdbcUrl(url);
-        dataSource.setUser(username);
-        dataSource.setPassword(password);
-        return new JdbcTemplate(dataSource);
     }
 
 }

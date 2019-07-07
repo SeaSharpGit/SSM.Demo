@@ -44,22 +44,23 @@ class RunTest {
 
         //JDBC方式
         JdbcTemplate jdbc=(JdbcTemplate)applicationContext.getBean("jdbcTemplate");
-        jdbc.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好5","2019-7-6");
+        jdbc.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好8","2019-7-6");
 
         //DBCP方式
-        JdbcTemplate dbcp=(JdbcTemplate)applicationContext.getBean("jdbcTemplate");
-        dbcp.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好6","2019-7-6");
+        JdbcTemplate dbcp=(JdbcTemplate)applicationContext.getBean("dbcpTemplate");
+        dbcp.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好9","2019-7-6");
 
         //C3P0方式
-        JdbcTemplate c3p0=(JdbcTemplate)applicationContext.getBean("jdbcTemplate");
-        c3p0.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好7","2019-7-6");
+        JdbcTemplate c3p0=(JdbcTemplate)applicationContext.getBean("c3p0Template");
+        c3p0.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好10","2019-7-6");
     }
 
     //
     @Test
     void Test3() {
-
-
+        ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
+        UserService userService=(UserService)applicationContext.getBean("userService");
+        userService.transaction();
     }
 
 
