@@ -25,7 +25,7 @@ class RunTest {
 
         //Connection方式
         Connection connection=(Connection)applicationContext.getBean("dbConnection");
-        try(PreparedStatement ps=connection.prepareStatement("INSERT INTO User(UserName,Date) VALUES(?,?)");) {
+        try(PreparedStatement ps=connection.prepareStatement("INSERT INTO User(Name,Date) VALUES(?,?)");) {
             ps.setString(1,"王海2");
             ps.setString(2,"2019-7-6");
             ps.execute();
@@ -33,15 +33,15 @@ class RunTest {
 
         //JDBC方式
         JdbcTemplate jdbc=(JdbcTemplate)applicationContext.getBean("jdbcTemplate");
-        jdbc.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好8","2019-7-6");
+        jdbc.update("INSERT INTO User(Name,Date) VALUES(?,?)","你好8","2019-7-6");
 
         //DBCP方式
         JdbcTemplate dbcp=(JdbcTemplate)applicationContext.getBean("dbcpTemplate");
-        dbcp.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好9","2019-7-6");
+        dbcp.update("INSERT INTO User(Name,Date) VALUES(?,?)","你好9","2019-7-6");
 
         //C3P0方式
         JdbcTemplate c3p0=(JdbcTemplate)applicationContext.getBean("c3p0Template");
-        c3p0.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好10","2019-7-6");
+        c3p0.update("INSERT INTO User(Name,Date) VALUES(?,?)","你好10","2019-7-6");
     }
 
     //事务
