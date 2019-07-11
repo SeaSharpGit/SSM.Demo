@@ -3,5 +3,7 @@
 PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
-    <
+    <select id="getById" parameterType="int" resultType="com.ssm.model.User">
+        SELECT * FROM User WHERE ID=#{ID}
+    </select>
 </mapper>

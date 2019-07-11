@@ -1,8 +1,17 @@
+import com.ssm.model.User;
 import com.ssm.service.UserService;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.annotation.Resource;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -50,6 +59,16 @@ class RunTest {
         ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
         UserService userService=(UserService)applicationContext.getBean("userService");
         userService.transaction();
+    }
+
+    @Test
+    void Test4() throws IOException {
+        SqlSessionFactoryBuilder builder=new SqlSessionFactoryBuilder();
+        InputStream stream= Resources.getResourceAsStream("SqlMapConfig.xml");
+        SqlSessionFactory factory=builder.build(stream);
+        try(SqlSession session=factory.openSession();) {
+            User user=session.selectOne("user.getById",30);
+        }
     }
 
 

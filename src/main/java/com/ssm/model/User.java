@@ -1,9 +1,11 @@
 package com.ssm.model;
 
+import java.util.Date;
+
 public class User {
     private int id;
     private String name;
-    private int date;
+    private Date date;
 
     public int getId() {
         return id;
@@ -21,11 +23,11 @@ public class User {
         this.name = name;
     }
 
-    public int getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }
