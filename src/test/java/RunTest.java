@@ -1,3 +1,4 @@
+import com.ssm.common.SqlSessionFactoryUtils;
 import com.ssm.model.User;
 import com.ssm.service.UserService;
 import org.apache.ibatis.io.Resources;
@@ -10,11 +11,14 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.annotation.Resource;
+import javax.naming.Name;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
 
 class RunTest {
 
@@ -63,11 +67,18 @@ class RunTest {
 
     @Test
     void Test4() throws IOException {
-        SqlSessionFactoryBuilder builder=new SqlSessionFactoryBuilder();
-        InputStream stream= Resources.getResourceAsStream("SqlMapConfig.xml");
-        SqlSessionFactory factory=builder.build(stream);
-        try(SqlSession session=factory.openSession();) {
+        SqlSessionFactory factory= SqlSessionFactoryUtils.GetSqlSessionFactory();
+        try(SqlSession session=factory.openSession(true)) {
             User user=session.selectOne("user.getById",30);
+            List<User> users=session.selectList("user.getList");
+
+            User addUser=new User();
+            addUser.setName("大海");
+            addUser.setDate(new Date());
+            session.insert("user.insert",addUser);
+
+
+            int a=1;
         }
     }
 

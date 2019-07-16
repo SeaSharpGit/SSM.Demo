@@ -6,4 +6,10 @@ PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN"
     <select id="getById" parameterType="int" resultType="com.ssm.model.User">
         SELECT * FROM User WHERE ID=#{ID}
     </select>
+    <select id="getList" resultType="com.ssm.model.User">
+        SELECT * FROM User
+    </select>
+    <insert id="insert" parameterType="com.ssm.model.User">
+        INSERT INTO User(Name,Date) VALUES(#{name},#{date})
+    </insert>
 </mapper>
