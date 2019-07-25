@@ -69,9 +69,11 @@ class RunTest {
     void Test4() throws IOException {
         SqlSessionFactory factory= SqlSessionFactoryUtils.GetSqlSessionFactory();
         try(SqlSession session=factory.openSession(true)) {
+            //查询
             User user=session.selectOne("user.getById",30);
             List<User> users=session.selectList("user.getList");
 
+            //新增
             User addUser=new User();
             addUser.setName("大海");
             addUser.setDate(new Date());
