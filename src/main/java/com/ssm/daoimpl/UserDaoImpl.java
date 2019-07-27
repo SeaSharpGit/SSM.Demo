@@ -1,30 +1,53 @@
 package com.ssm.daoimpl;
 
+import com.ssm.common.SqlSessionFactoryUtils;
 import com.ssm.dao.UserDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import com.ssm.model.User;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 
 @Repository("userDao")
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
-    private JdbcTemplate c3p0Template;
-
     @Override
-    public String sayHello() {
-        return "Hello World!";
+    public List<User> getList() {
+        try(SqlSession session=SqlSessionFactoryUtils.openSession()) {
+            List<User> users=session.selectList("user.getList");
+            return users;
+        }
     }
 
     @Override
-    public void insert1() {
-        c3p0Template.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好8","2019-7-6");
+    public User getById(int id) {
+        try(SqlSession session=SqlSessionFactoryUtils.openSession()) {
+            //查询
+            User user=session.selectOne("user.getById",id);
+            return user;
+        }
     }
 
     @Override
-    public void insert2() {
-        c3p0Template.update("INSERT INTO User(UserName,Date) VALUES(?,?)","你好9","2019-7-6");
+    public int add(User user) {
+        try(SqlSession session=SqlSessionFactoryUtils.openSession()) {
+            session.insert("user.insert",user);
+            return user.getId();
+        }
     }
 
+    @Override
+    public void update(User user) {
+        try(SqlSession session=SqlSessionFactoryUtils.openSession()) {
+            session.update("user.update",user);
+        }
+    }
+
+    @Override
+    public void delete(int id) {
+        try(SqlSession session=SqlSessionFactoryUtils.openSession()) {
+            session.delete("user.delete",id);
+        }
+    }
 }

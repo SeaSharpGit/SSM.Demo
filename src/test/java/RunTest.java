@@ -1,19 +1,14 @@
 import com.ssm.common.SqlSessionFactoryUtils;
 import com.ssm.model.User;
 import com.ssm.service.UserService;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.annotation.Resource;
-import javax.naming.Name;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -68,24 +63,12 @@ class RunTest {
 
     //MyBatis
     @Test
-    void Test4() throws IOException {
-        SqlSessionFactory factory= SqlSessionFactoryUtils.GetSqlSessionFactory();
-        try(SqlSession session=factory.openSession(true)) {
-            //查询
-            User user=session.selectOne("user.getById",30);
-            List<User> users=session.selectList("user.getList");
-            //新增
-            User addUser=new User();
-            addUser.setName("大海");
-            addUser.setDate(new Date());
-            session.insert("user.insert",addUser);
-            //修改
-            addUser.setName("大海2号");
-            session.update("user.update",addUser);
-            //删除
-            session.delete("user.delete",addUser.getId());
-            int a=1;
-        }
+    void Test4(){
+        ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
+        UserService userService=(UserService)applicationContext.getBean("userService");
+
+
+
     }
 
 
