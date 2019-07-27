@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+//创建项目时选择org.apache.archetypes:maven-archetype-webapp
 class RunTest {
 
     //IOC和AOP
@@ -65,6 +66,7 @@ class RunTest {
         userService.transaction();
     }
 
+    //MyBatis
     @Test
     void Test4() throws IOException {
         SqlSessionFactory factory= SqlSessionFactoryUtils.GetSqlSessionFactory();
@@ -72,14 +74,16 @@ class RunTest {
             //查询
             User user=session.selectOne("user.getById",30);
             List<User> users=session.selectList("user.getList");
-
             //新增
             User addUser=new User();
             addUser.setName("大海");
             addUser.setDate(new Date());
             session.insert("user.insert",addUser);
-
-
+            //修改
+            addUser.setName("大海2号");
+            session.update("user.update",addUser);
+            //删除
+            session.delete("user.delete",addUser.getId());
             int a=1;
         }
     }
