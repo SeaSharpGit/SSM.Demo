@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="user">
-    <select id="getById" parameterType="int" resultType="com.ssm.model.User">
-      SELECT * FROM User WHERE ID=#{ID}
-    </select>
+<mapper namespace="com.ssm.dao.UserDao">
     <select id="getList" resultType="com.ssm.model.User">
       SELECT * FROM User
+    </select>
+    <select id="getById" parameterType="int" resultType="com.ssm.model.User">
+      SELECT * FROM User WHERE ID=#{ID}
     </select>
     <insert id="insert" parameterType="com.ssm.model.User" useGeneratedKeys="true" keyProperty="id">
       INSERT INTO User(Name,Date) VALUES(#{name},#{date})

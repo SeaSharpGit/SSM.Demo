@@ -30,7 +30,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public int add(User user) {
+    public int insert(User user) {
         try(SqlSession session=SqlSessionFactoryUtils.openSession()) {
             session.insert("user.insert",user);
             return user.getId();

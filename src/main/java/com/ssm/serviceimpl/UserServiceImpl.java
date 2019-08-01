@@ -1,8 +1,10 @@
 package com.ssm.serviceimpl;
 
+import com.ssm.common.SqlSessionFactoryUtils;
 import com.ssm.dao.UserDao;
 import com.ssm.model.User;
 import com.ssm.service.UserService;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -46,27 +48,42 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<User> getList() {
-        return userDao.getList();
+        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
+            UserDao userDao=session.getMapper(UserDao.class);
+            return userDao.getList();
+        }
     }
 
     @Override
     public User getById(int id) {
-        return userDao.getById(id);
+        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
+            UserDao userDao=session.getMapper(UserDao.class);
+            return userDao.getById(id);
+        }
     }
 
     @Override
-    public int add(User user) {
-        return userDao.add(user);
+    public int insert(User user) {
+        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
+            UserDao userDao=session.getMapper(UserDao.class);
+            return userDao.insert(user);
+        }
     }
 
     @Override
     public void update(User user) {
-        userDao.update(user);
+        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
+            UserDao userDao=session.getMapper(UserDao.class);
+            userDao.update(user);
+        }
     }
 
     @Override
     public void delete(int id) {
-        userDao.delete(id);
+        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
+            UserDao userDao=session.getMapper(UserDao.class);
+            userDao.delete(id);
+        }
     }
 
 
