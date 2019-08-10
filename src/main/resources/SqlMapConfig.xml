@@ -8,6 +8,7 @@ PUBLIC "-//mybaits.org//DTD Config 3.0//EN"
 
     <!--别名-->
     <typeAliases>
+        <!--包扫描-->
         <package name="com.ssm.model"/>
     </typeAliases>
 
@@ -35,6 +36,7 @@ PUBLIC "-//mybaits.org//DTD Config 3.0//EN"
 
     <!--加载映射文件-->
     <mappers>
-        <mapper resource="user.xml"/>
+        <!--包扫描-->
+        <package name="com.ssm.mapper"/>
     </mappers>
 </configuration>

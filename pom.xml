@@ -89,16 +89,16 @@
     <!--<version>${taglibs-standard.version}</version>-->
     <!--</dependency>-->
     <!-- ================================================ log4j2 config ============================================ -->
-    <dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-core</artifactId>
-    <version>2.10.0</version>
-    </dependency>
-    <dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-slf4j-impl</artifactId>
-    <version>2.10.0</version>
-    </dependency>
+    <!--<dependency>-->
+    <!--<groupId>org.apache.logging.log4j</groupId>-->
+    <!--<artifactId>log4j-core</artifactId>-->
+    <!--<version>2.10.0</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>org.apache.logging.log4j</groupId>-->
+    <!--<artifactId>log4j-slf4j-impl</artifactId>-->
+    <!--<version>2.10.0</version>-->
+    <!--</dependency>-->
     <!-- ============================================== jackson config ============================================= -->
     <!--<dependency>-->
     <!--<groupId>com.fasterxml.jackson.core</groupId>-->
@@ -243,6 +243,14 @@
 
   <build>
     <finalName>ssm</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+    </resources>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

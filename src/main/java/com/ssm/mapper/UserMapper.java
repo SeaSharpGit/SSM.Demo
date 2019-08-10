@@ -1,10 +1,10 @@
-package com.ssm.dao;
+package com.ssm.mapper;
 
 import com.ssm.model.User;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserMapper {
     List<User> getList();
     User getById(int id);
     int insert(User user);

@@ -1,7 +1,7 @@
 package com.ssm.serviceimpl;
 
 import com.ssm.common.SqlSessionFactoryUtils;
-import com.ssm.dao.UserDao;
+import com.ssm.mapper.UserMapper;
 import com.ssm.model.User;
 import com.ssm.service.UserService;
 import org.apache.ibatis.session.SqlSession;
@@ -46,40 +46,40 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<User> getList() {
         try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
-            UserDao userDao=session.getMapper(UserDao.class);
-            return userDao.getList();
+            UserMapper userMapper =session.getMapper(UserMapper.class);
+            return userMapper.getList();
         }
     }
 
     @Override
     public User getById(int id) {
         try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
-            UserDao userDao=session.getMapper(UserDao.class);
-            return userDao.getById(id);
+            UserMapper userMapper =session.getMapper(UserMapper.class);
+            return userMapper.getById(id);
         }
     }
 
     @Override
     public int insert(User user) {
         try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
-            UserDao userDao=session.getMapper(UserDao.class);
-            return userDao.insert(user);
+            UserMapper userMapper =session.getMapper(UserMapper.class);
+            return userMapper.insert(user);
         }
     }
 
     @Override
     public void update(User user) {
         try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
-            UserDao userDao=session.getMapper(UserDao.class);
-            userDao.update(user);
+            UserMapper userMapper =session.getMapper(UserMapper.class);
+            userMapper.update(user);
         }
     }
 
     @Override
     public void delete(int id) {
         try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
-            UserDao userDao=session.getMapper(UserDao.class);
-            userDao.delete(id);
+            UserMapper userMapper =session.getMapper(UserMapper.class);
+            userMapper.delete(id);
         }
     }
 
