@@ -14,15 +14,11 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.List;
 
-@Transactional
 @Service("userService")
 public class UserServiceImpl implements UserService{
     //第一种方式
     @Autowired
-    //第二种方式：@Resource(name = "userDao")
-    private UserDao userDao;
-
-    @Autowired
+    //第二种方式：@Resource(name = "c3p0Template")
     private JdbcTemplate c3p0Template;
 
     @Override
@@ -40,6 +36,7 @@ public class UserServiceImpl implements UserService{
 
     }
 
+    @Transactional
     public void transaction(){
         c3p0Template.update("INSERT INTO User(Name,Date) VALUES(?,?)","你好8","2019-7-6");
         int x=1/0;

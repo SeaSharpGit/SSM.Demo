@@ -61,7 +61,7 @@ class RunTest {
         userService.transaction();
     }
 
-    //MyBatis
+    //MyBatis增删改查
     @Test
     void Test4(){
         ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");

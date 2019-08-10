@@ -3,16 +3,16 @@
 PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssm.dao.UserDao">
-    <select id="getList" resultType="com.ssm.model.User">
+    <select id="getList" resultType="User">
       SELECT * FROM User
     </select>
-    <select id="getById" parameterType="int" resultType="com.ssm.model.User">
+    <select id="getById" parameterType="int" resultType="User">
       SELECT * FROM User WHERE ID=#{ID}
     </select>
-    <insert id="insert" parameterType="com.ssm.model.User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
       INSERT INTO User(Name,Date) VALUES(#{name},#{date})
     </insert>
-    <update id="update" parameterType="com.ssm.model.User">
+    <update id="update" parameterType="User">
       UPDATE User SET Name=#{name} WHERE `ID`=#{id}
     </update>
     <delete id="delete" parameterType="int">
