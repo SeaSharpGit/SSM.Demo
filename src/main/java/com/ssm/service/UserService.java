@@ -7,7 +7,7 @@ import java.util.List;
 public interface UserService {
     String sayHello();
     void transaction();
-    List<User> getList();
+    List<User> getListByName(String name);
     User getById(int id);
     int insert(User user);
     void update(User user);

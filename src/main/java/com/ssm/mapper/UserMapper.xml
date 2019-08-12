@@ -3,11 +3,16 @@
 PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssm.mapper.UserMapper">
-    <select id="getList" resultType="User">
+    <select id="getListByName" parameterType="string" resultType="User">
       SELECT * FROM User
+      <where>
+          <if test="value!=null and value!=''">
+              Name LIKE '%${value}%'
+          </if>
+      </where>
     </select>
     <select id="getById" parameterType="int" resultType="User">
-      SELECT * FROM User WHERE ID=#{ID}
+      SELECT * FROM User WHERE ID=#{id}
     </select>
     <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
       INSERT INTO User(Name,Date) VALUES(#{name},#{date})
@@ -16,6 +21,6 @@ PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN"
       UPDATE User SET Name=#{name} WHERE `ID`=#{id}
     </update>
     <delete id="delete" parameterType="int">
-        DELETE FROM User WHERE ID=#{id}
+      DELETE FROM User WHERE ID=#{id}
     </delete>
 </mapper>

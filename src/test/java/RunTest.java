@@ -67,7 +67,7 @@ class RunTest {
         ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
         UserService userService=(UserService)applicationContext.getBean("userService");
         //查询列表
-        List<User> users=userService.getList();
+        List<User> users=userService.getListByName("大");
         //新增
         User user=new User();
         user.setName("嘿嘿");

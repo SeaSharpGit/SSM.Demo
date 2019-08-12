@@ -44,10 +44,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> getList() {
+    public List<User> getListByName(String name) {
         try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
             UserMapper userMapper =session.getMapper(UserMapper.class);
-            return userMapper.getList();
+            return userMapper.getListByName(name);
         }
     }
 
