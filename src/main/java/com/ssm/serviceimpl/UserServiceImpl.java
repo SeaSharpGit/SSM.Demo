@@ -3,6 +3,7 @@ package com.ssm.serviceimpl;
 import com.ssm.common.SqlSessionFactoryUtils;
 import com.ssm.mapper.UserMapper;
 import com.ssm.model.User;
+import com.ssm.model.UserParameter;
 import com.ssm.service.UserService;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,14 @@ public class UserServiceImpl implements UserService{
         try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
             UserMapper userMapper =session.getMapper(UserMapper.class);
             return userMapper.getById(id);
+        }
+    }
+
+    @Override
+    public List<User> getByIds(UserParameter parameter) {
+        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
+            UserMapper userMapper =session.getMapper(UserMapper.class);
+            return userMapper.getByIds(parameter);
         }
     }
 

@@ -1,5 +1,6 @@
 import com.ssm.common.SqlSessionFactoryUtils;
 import com.ssm.model.User;
+import com.ssm.model.UserParameter;
 import com.ssm.service.UserService;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,6 +13,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -68,6 +71,9 @@ class RunTest {
         UserService userService=(UserService)applicationContext.getBean("userService");
         //查询列表
         List<User> users=userService.getListByName("大");
+        UserParameter parameter=new UserParameter();
+        parameter.setIds(Arrays.asList(30,31,32));
+        List<User> users2=userService.getByIds(parameter);
         //新增
         User user=new User();
         user.setName("嘿嘿");
