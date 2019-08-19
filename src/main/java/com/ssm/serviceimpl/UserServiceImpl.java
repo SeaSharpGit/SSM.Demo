@@ -17,9 +17,9 @@ import java.util.List;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
-    //第一种方式
-    @Autowired
+    //第一种方式：@Autowired
     //第二种方式：@Resource(name = "c3p0Template")
+    @Autowired
     private JdbcTemplate c3p0Template;
 
     @Override

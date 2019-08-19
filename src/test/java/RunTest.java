@@ -1,4 +1,5 @@
 import com.ssm.common.SqlSessionFactoryUtils;
+import com.ssm.mapper.UserMapper;
 import com.ssm.model.User;
 import com.ssm.model.UserParameter;
 import com.ssm.service.UserService;
@@ -69,24 +70,9 @@ class RunTest {
     void Test4(){
         ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
         UserService userService=(UserService)applicationContext.getBean("userService");
-        //查询列表
-        List<User> users=userService.getListByName("大");
-        UserParameter parameter=new UserParameter();
-        parameter.setIds(Arrays.asList(30,31,32));
-        List<User> users2=userService.getByIds(parameter);
-        //新增
-        User user=new User();
-        user.setName("嘿嘿");
-        user.setDate(new Date());
-        userService.insert(user);
-        int id=user.getId();
-        //查询一个
-        User model=userService.getById(id);
-        //修改
-        model.setName("嘿嘿改了");
-        userService.update(model);
-        //删除
-        userService.delete(id);
+        UserMapper userMapper=applicationContext.getBean(UserMapper.class);
+        User user=userMapper.getById(30);
+        int a=1;
     }
 
 
