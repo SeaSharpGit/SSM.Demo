@@ -40,8 +40,8 @@
         <property name="url" value="${url}"/>
         <property name="username" value="${username}"/>
         <property name="password" value="${password}"/>
-        <!--<property name="maxTotal" value="${maxTotal}"/>-->
-        <!--<property name="maxIdle" value="${maxIdle}"/>-->
+        <property name="maxTotal" value="${maxTotal}"/>
+        <property name="maxIdle" value="${maxIdle}"/>
     </bean>
     <bean id="dbcpTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dbcpDataSource"/>
