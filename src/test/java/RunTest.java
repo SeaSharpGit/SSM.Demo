@@ -1,23 +1,14 @@
-import com.ssm.common.SqlSessionFactoryUtils;
 import com.ssm.mapper.UserMapper;
-import com.ssm.model.User;
-import com.ssm.model.UserParameter;
+import com.ssm.entity.User;
 import com.ssm.service.UserService;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
 //创建项目时选择org.apache.archetypes:maven-archetype-webapp
 class RunTest {

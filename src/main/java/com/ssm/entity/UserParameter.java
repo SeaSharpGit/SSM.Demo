@@ -1,4 +1,4 @@
-package com.ssm.model;
+package com.ssm.entity;
 
 import java.util.List;
 

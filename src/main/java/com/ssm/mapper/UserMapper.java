@@ -1,7 +1,7 @@
 package com.ssm.mapper;
 
-import com.ssm.model.User;
-import com.ssm.model.UserParameter;
+import com.ssm.entity.User;
+import com.ssm.entity.UserParameter;
 
 import java.util.List;
 
