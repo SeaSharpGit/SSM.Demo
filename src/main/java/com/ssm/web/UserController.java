@@ -12,7 +12,7 @@ public class UserController {
     public ModelAndView hello(){
         ModelAndView mav=new ModelAndView();
         mav.addObject("msg","Hello SpringMVC!");
-        mav.setViewName("/WEB-INF/jsp/Test.jsp");
+        mav.setViewName("Test");
         return mav;
     }
 }

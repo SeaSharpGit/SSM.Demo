@@ -22,9 +22,6 @@
     <!--自动装配注解IOC-->
     <context:component-scan base-package="com.*"/>
 
-    <!--使用最新的映射器RequestMappingHandlerMapping和适配器RequestMappingHandlerAdapter-->
-    <mvc:annotation-driven/>
-
     <!--自动装配注解AOP-->
     <aop:aspectj-autoproxy/>
 
@@ -79,6 +76,15 @@
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.ssm.mapper"/>
+    </bean>
+
+    <!--使用最新的映射器RequestMappingHandlerMapping和适配器RequestMappingHandlerAdapter-->
+    <mvc:annotation-driven/>
+
+    <!--视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
 </beans>
