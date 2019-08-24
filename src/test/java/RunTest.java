@@ -60,7 +60,6 @@ class RunTest {
     @Test
     void Test4(){
         ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
-        UserService userService=(UserService)applicationContext.getBean("userService");
         UserMapper userMapper=applicationContext.getBean(UserMapper.class);
         User user=userMapper.getById(30);
         int a=1;
