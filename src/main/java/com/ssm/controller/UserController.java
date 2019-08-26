@@ -1,6 +1,9 @@
 package com.ssm.controller;
 
+import com.ssm.entity.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -10,8 +13,21 @@ public class UserController {
     @RequestMapping("hello")
     public ModelAndView hello(){
         ModelAndView mav=new ModelAndView();
-        mav.addObject("msg","Hello SpringMVC!");
+        mav.addObject("msg","Hello Spring MVC!");
         mav.setViewName("Test");
         return mav;
+    }
+
+    @RequestMapping("hello2")
+    public String hello2(Model model,Integer id){
+        model.addAttribute("msg","Hello Spring MVC!");
+        System.out.println(id);
+        return "Test";
+    }
+
+    @RequestMapping("save")
+    public String save(Model model, User user){
+        model.addAttribute("msg","保存成功!");
+        return "Test";
     }
 }

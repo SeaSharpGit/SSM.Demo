@@ -12,5 +12,10 @@
 </head>
 <body>
     ${msg}
+    <form action="save.action" method="post">
+        ID：<input type="text" name="id"><br/>
+        Name：<input type="text" name="name"><br/>
+        <button type="submit">提交</button>
+    </form>
 </body>
 </html>
