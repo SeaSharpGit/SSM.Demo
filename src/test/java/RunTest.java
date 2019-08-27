@@ -62,8 +62,6 @@ class RunTest {
         ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
         UserMapper userMapper=applicationContext.getBean(UserMapper.class);
         User user=userMapper.getById(30);
-        user.getDate();
-        int a=1;
     }
 
 

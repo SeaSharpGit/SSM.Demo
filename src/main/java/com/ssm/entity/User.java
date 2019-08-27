@@ -1,10 +1,12 @@
 package com.ssm.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class User {
     private int id;
     private String name;

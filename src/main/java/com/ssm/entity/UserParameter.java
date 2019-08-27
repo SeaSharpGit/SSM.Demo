@@ -1,10 +1,12 @@
 package com.ssm.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class UserParameter {
     private List<Integer> ids;
 }
