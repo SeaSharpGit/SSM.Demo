@@ -8,6 +8,7 @@
     <form action="save.action" method="post">
         ID：<input type="text" name="id"><br/>
         Name：<input type="text" name="name"><br/>
+        Date：<input type="text" name="date"><br/>
         <button type="submit">提交</button>
     </form>
 </body>

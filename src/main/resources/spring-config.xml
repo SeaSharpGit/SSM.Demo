@@ -76,4 +76,5 @@
         <property name="basePackage" value="com.ssm.mapper"/>
     </bean>
 
+
 </beans>
