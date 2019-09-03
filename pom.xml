@@ -36,8 +36,6 @@
     <!--<jackson.version>2.9.4</jackson.version>-->
     <!--junit5-->
     <!--<junit4.version>4.12</junit4.version>-->
-    <!--servlet-->
-    <!--<javax.servlet.version>4.0.0</javax.servlet.version>-->
     <!--<jstl.version>1.2</jstl.version>-->
     <!--<taglibs-standard.version>1.2.5</taglibs-standard.version>-->
 
@@ -77,12 +75,12 @@
       <scope>provided</scope>
     </dependency>
     <!-- =============================================== servlet config ============================================ -->
-    <!--<dependency>-->
-    <!--<groupId>javax.servlet</groupId>-->
-    <!--<artifactId>javax.servlet-api</artifactId>-->
-    <!--<version>${javax.servlet.version}</version>-->
-    <!--<scope>provided</scope>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.0</version>
+      <scope>provided</scope>
+    </dependency>
     <!--<dependency>-->
     <!--<groupId>jstl</groupId>-->
     <!--<artifactId>jstl</artifactId>-->

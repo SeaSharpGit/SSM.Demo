@@ -30,4 +30,6 @@
             </set>
         </property>
     </bean>
+
+    <bean class="com.ssm.common.MyExceptionResolver"/>
 </beans>

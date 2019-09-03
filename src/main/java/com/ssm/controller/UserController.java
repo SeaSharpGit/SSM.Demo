@@ -32,4 +32,10 @@ public class UserController {
         model.addAttribute("msg","保存成功!");
         return "Test";
     }
+
+    @RequestMapping(value = "error",method = RequestMethod.GET)
+    public String error(Model model){
+        throw new RuntimeException("出错啦");
+    }
+
 }
