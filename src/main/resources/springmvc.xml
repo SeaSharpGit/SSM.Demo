@@ -31,5 +31,13 @@
         </property>
     </bean>
 
+    <!--异常拦截器-->
     <bean class="com.ssm.common.MyExceptionResolver"/>
+
+    <!--配置多媒体处理器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--上传文件大小8MB-->
+        <property name="maxUploadSize" value="8388608"/>
+    </bean>
+
 </beans>
