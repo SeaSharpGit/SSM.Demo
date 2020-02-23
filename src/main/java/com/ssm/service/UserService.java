@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface UserService {
     String sayHello();
-    void transaction();
     List<User> getListByName(String name);
     User getById(int id);
     List<User> getByIds(UserParameter parameter);

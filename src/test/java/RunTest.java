@@ -48,17 +48,9 @@ class RunTest {
         c3p0.update("INSERT INTO User(Name,Date) VALUES(?,?)","你好10","2019-7-6");
     }
 
-    //事务
-    @Test
-    void Test3() {
-        ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
-        UserService userService=(UserService)applicationContext.getBean("userService");
-        userService.transaction();
-    }
-
     //MyBatis增删改查
     @Test
-    void Test4(){
+    void Test3(){
         ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
         UserMapper userMapper=applicationContext.getBean(UserMapper.class);
         User user=userMapper.getById(30);

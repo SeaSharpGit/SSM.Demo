@@ -15,12 +15,11 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.List;
 
-@Service("userService")
+@Service
+@Transactional
 public class UserServiceImpl implements UserService{
-    //第一种方式：@Autowired
-    //第二种方式：@Resource(name = "c3p0Template")
     @Autowired
-    private JdbcTemplate c3p0Template;
+    private UserMapper userMapper;
 
     @Override
     public String sayHello() {
@@ -37,59 +36,34 @@ public class UserServiceImpl implements UserService{
 
     }
 
-    @Transactional
-    public void transaction(){
-        c3p0Template.update("INSERT INTO User(Name,Date) VALUES(?,?)","你好8","2019-7-6");
-        int x=1/0;
-        c3p0Template.update("INSERT INTO User(Name,Date) VALUES(?,?)","你好8","2019-7-6");
-    }
-
     @Override
     public List<User> getListByName(String name) {
-        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
-            UserMapper userMapper =session.getMapper(UserMapper.class);
-            return userMapper.getListByName(name);
-        }
+        return userMapper.getListByName(name);
     }
 
     @Override
     public User getById(int id) {
-        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
-            UserMapper userMapper =session.getMapper(UserMapper.class);
-            return userMapper.getById(id);
-        }
+        return userMapper.getById(id);
     }
 
     @Override
     public List<User> getByIds(UserParameter parameter) {
-        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
-            UserMapper userMapper =session.getMapper(UserMapper.class);
-            return userMapper.getByIds(parameter);
-        }
+        return userMapper.getByIds(parameter);
     }
 
     @Override
     public int insert(User user) {
-        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
-            UserMapper userMapper =session.getMapper(UserMapper.class);
-            return userMapper.insert(user);
-        }
+        return userMapper.insert(user);
     }
 
     @Override
     public void update(User user) {
-        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
-            UserMapper userMapper =session.getMapper(UserMapper.class);
-            userMapper.update(user);
-        }
+        userMapper.update(user);
     }
 
     @Override
     public void delete(int id) {
-        try(SqlSession session= SqlSessionFactoryUtils.openSession()) {
-            UserMapper userMapper =session.getMapper(UserMapper.class);
-            userMapper.delete(id);
-        }
+        userMapper.delete(id);
     }
 
 }
