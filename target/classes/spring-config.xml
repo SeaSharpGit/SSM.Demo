@@ -23,50 +23,49 @@
     <!--自动装配注解AOP-->
     <aop:aspectj-autoproxy/>
 
-    <!--JDBC-->
-    <bean id="jdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <!--Druid-->
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="${driver}"/>
         <property name="url" value="${url}"/>
         <property name="username" value="${username}"/>
         <property name="password" value="${password}"/>
     </bean>
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="jdbcDataSource"/>
-    </bean>
+
+    <!--JDBC-->
+<!--    <bean id="jdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+<!--        <property name="driverClassName" value="${driver}"/>-->
+<!--        <property name="url" value="${url}"/>-->
+<!--        <property name="username" value="${username}"/>-->
+<!--        <property name="password" value="${password}"/>-->
+<!--    </bean>-->
 
     <!--DBCP-->
-    <bean id="dbcpDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-        <property name="driverClassName" value="${driver}"/>
-        <property name="url" value="${url}"/>
-        <property name="username" value="${username}"/>
-        <property name="password" value="${password}"/>
-        <property name="maxTotal" value="${maxTotal}"/>
-        <property name="maxIdle" value="${maxIdle}"/>
-    </bean>
-    <bean id="dbcpTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dbcpDataSource"/>
-    </bean>
+<!--    <bean id="dbcpDataSource" class="org.apache.commons.dbcp2.BasicDataSource">-->
+<!--        <property name="driverClassName" value="${driver}"/>-->
+<!--        <property name="url" value="${url}"/>-->
+<!--        <property name="username" value="${username}"/>-->
+<!--        <property name="password" value="${password}"/>-->
+<!--        <property name="maxTotal" value="${maxTotal}"/>-->
+<!--        <property name="maxIdle" value="${maxIdle}"/>-->
+<!--    </bean>-->
 
     <!--C3P0-->
-    <bean id="c3p0DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="${driver}"/>
-        <property name="jdbcUrl" value="${url}"/>
-        <property name="user" value="${username}"/>
-        <property name="password" value="${password}"/>
-    </bean>
-    <bean id="c3p0Template" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="c3p0DataSource"/>
-    </bean>
+<!--    <bean id="c3p0DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+<!--        <property name="driverClass" value="${driver}"/>-->
+<!--        <property name="jdbcUrl" value="${url}"/>-->
+<!--        <property name="user" value="${username}"/>-->
+<!--        <property name="password" value="${password}"/>-->
+<!--    </bean>-->
 
     <!--开启注解事务-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="c3p0DataSource"/>
+        <property name="dataSource" ref="druidDataSource"/>
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--mybatis配置-->
     <bean id="mySqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dbcpDataSource"/>
+        <property name="dataSource" ref="druidDataSource"/>
         <!--加载核心配置文件-->
         <property name="configLocation" value="classpath:SqlMapConfig.xml"/>
         <!--别名包扫描-->

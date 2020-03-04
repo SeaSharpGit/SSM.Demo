@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.function.IntConsumer;
 
 //创建项目时选择org.apache.archetypes:maven-archetype-webapp
 class RunTest {
@@ -55,6 +56,9 @@ class RunTest {
         UserMapper userMapper=applicationContext.getBean(UserMapper.class);
         User user=userMapper.getById(30);
     }
+
+
+
 
 
 
