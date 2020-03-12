@@ -7,12 +7,33 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.function.IntConsumer;
 
 //创建项目时选择org.apache.archetypes:maven-archetype-webapp
 class RunTest {
+
+    /**
+     * Jdbc基本操作
+     */
+    @Test
+    void jdbc(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            try(Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/Test?characterEncoding=utf-8","root","sa123456")) {
+                try(PreparedStatement ps=connection.prepareStatement("INSERT INTO User(Name,Date) VALUES(?,?)");) {
+                    ps.setString(1,"王海2");
+                    ps.setString(2,"2019-7-6");
+                    ps.execute();
+                }
+            }
+
+        }catch (Exception ex){
+
+        }
+    }
 
     //IOC和AOP
     @Test
@@ -21,32 +42,6 @@ class RunTest {
         UserService userService=(UserService)applicationContext.getBean("userService");
         userService.sayHello();
         ((FileSystemXmlApplicationContext) applicationContext).close();
-    }
-
-    //Connection、JDBC、DBCP、C3P0
-    @Test
-    void Test2() throws SQLException {
-        ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
-
-        //Connection方式
-        Connection connection=(Connection)applicationContext.getBean("dbConnection");
-        try(PreparedStatement ps=connection.prepareStatement("INSERT INTO User(Name,Date) VALUES(?,?)");) {
-            ps.setString(1,"王海2");
-            ps.setString(2,"2019-7-6");
-            ps.execute();
-        }
-
-        //JDBC方式
-        JdbcTemplate jdbc=(JdbcTemplate)applicationContext.getBean("jdbcTemplate");
-        jdbc.update("INSERT INTO User(Name,Date) VALUES(?,?)","你好8","2019-7-6");
-
-        //DBCP方式
-        JdbcTemplate dbcp=(JdbcTemplate)applicationContext.getBean("dbcpTemplate");
-        dbcp.update("INSERT INTO User(Name,Date) VALUES(?,?)","你好9","2019-7-6");
-
-        //C3P0方式
-        JdbcTemplate c3p0=(JdbcTemplate)applicationContext.getBean("c3p0Template");
-        c3p0.update("INSERT INTO User(Name,Date) VALUES(?,?)","你好10","2019-7-6");
     }
 
     //MyBatis增删改查
