@@ -23,6 +23,9 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String sayHello() {
+        userMapper.getById(30);
+        userMapper.getById(30);
+        userMapper.getById(30);
         return "Hello World!";
     }
 
@@ -36,32 +39,32 @@ public class UserServiceImpl implements UserService{
 
     }
 
-    @Override
+
     public List<User> getListByName(String name) {
         return userMapper.getListByName(name);
     }
 
-    @Override
+
     public User getById(int id) {
         return userMapper.getById(id);
     }
 
-    @Override
+
     public List<User> getByIds(UserParameter parameter) {
         return userMapper.getByIds(parameter);
     }
 
-    @Override
+
     public int insert(User user) {
         return userMapper.insert(user);
     }
 
-    @Override
+
     public void update(User user) {
         userMapper.update(user);
     }
 
-    @Override
+
     public void delete(int id) {
         userMapper.delete(id);
     }

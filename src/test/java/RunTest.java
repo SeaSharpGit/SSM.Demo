@@ -29,34 +29,31 @@ class RunTest {
                     ps.execute();
                 }
             }
-
         }catch (Exception ex){
 
         }
     }
 
-    //IOC和AOP
+    /**
+     * IOC和AOP
+     */
     @Test
-    void Test() {
+    void iocAndAop() {
         ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
         UserService userService=(UserService)applicationContext.getBean("userService");
         userService.sayHello();
         ((FileSystemXmlApplicationContext) applicationContext).close();
     }
 
-    //MyBatis增删改查
+    /**
+     * mybatis
+     */
     @Test
-    void Test3(){
+    void mybatis(){
         ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
         UserMapper userMapper=applicationContext.getBean(UserMapper.class);
         User user=userMapper.getById(30);
     }
-
-
-
-
-
-
 
 
 }
