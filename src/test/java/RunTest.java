@@ -16,7 +16,7 @@ import java.util.function.IntConsumer;
 class RunTest {
 
     /**
-     * Jdbc基本操作
+     * jdbc基本操作
      */
     @Test
     void jdbc(){
@@ -54,6 +54,8 @@ class RunTest {
         UserMapper userMapper=applicationContext.getBean(UserMapper.class);
         User user=userMapper.getById(30);
     }
+
+
 
 
 }
