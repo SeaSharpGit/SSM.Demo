@@ -70,6 +70,8 @@
         <property name="configLocation" value="classpath:SqlMapConfig.xml"/>
         <!--别名包扫描-->
         <property name="typeAliasesPackage" value="com.ssm.entity"/>
+        <!--指定xml文件路径-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.ssm.mapper"/>
