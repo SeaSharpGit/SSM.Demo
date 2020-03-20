@@ -22,7 +22,6 @@
 
     <!--javaee版本-->
     <!--<javaee.version></javaee.version>-->
-    <!-- spring版本号 -->
 
     <!--log4j版本号-->
     <!--<log4j.version></log4j.version>-->
@@ -32,8 +31,6 @@
     <!--<commons-lang3.version>3.7</commons-lang3.version>-->
     <!--json解析器-->
     <!--<jackson.version>2.9.4</jackson.version>-->
-    <!--junit5-->
-    <!--<junit4.version>4.12</junit4.version>-->
     <!--<jstl.version>1.2</jstl.version>-->
     <!--<taglibs-standard.version>1.2.5</taglibs-standard.version>-->
 
@@ -163,42 +160,22 @@
     <!-- ============================================= junit5 =============================================== -->
     <!--单元测试-->
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.6.0</version>
-      <scope>compile</scope>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>org.junit.platform</groupId>-->
-    <!--<artifactId>junit-platform-launcher</artifactId>-->
-    <!--<version>${junit-platform-laubcher.version}</version>-->
-    <!--<scope>test</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>org.junit.jupiter</groupId>-->
-    <!--<artifactId>junit-jupiter-engine</artifactId>-->
-    <!--<version>${junit5.version}</version>-->
-    <!--<scope>test</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>org.junit.vintage</groupId>-->
-    <!--<artifactId>junit-vintage-engine</artifactId>-->
-    <!--<version>${junit5.version}</version>-->
-    <!--<scope>test</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>junit</groupId>-->
-    <!--<artifactId>junit</artifactId>-->
-    <!--<version>RELEASE</version>-->
-    <!--<scope>compile</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>org.junit.jupiter</groupId>-->
-    <!--<artifactId>junit-jupiter-api</artifactId>-->
-    <!--<version>RELEASE</version>-->
-    <!--<scope>compile</scope>-->
-    <!--</dependency>-->
-
+<!--    <dependency>-->
+<!--      <groupId>org.junit.jupiter</groupId>-->
+<!--      <artifactId>junit-jupiter-api</artifactId>-->
+<!--      <version>5.6.0</version>-->
+<!--      <scope>compile</scope>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework</groupId>-->
+<!--      <artifactId>spring-test</artifactId>-->
+<!--      <version>5.2.4.RELEASE</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
     <!-- ============================================ mybatis =============================================== -->
     <dependency>
       <groupId>org.mybatis</groupId>
@@ -211,11 +188,6 @@
       <artifactId>mybatis-spring</artifactId>
       <version>1.3.1</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>ojdbc</groupId>-->
-    <!--<artifactId>ojdbc7</artifactId>-->
-    <!--<version>${ojdbc.version}</version>-->
-    <!--</dependency>-->
     <!-- ================================================= apache ================================================== -->
     <dependency>
       <groupId>org.apache.commons</groupId>
