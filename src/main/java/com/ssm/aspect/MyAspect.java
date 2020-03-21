@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component("myAspect")
 public class MyAspect {
 
-    @Pointcut(value = "execution(* com.ssm.serviceimpl.UserServiceImpl.sayHello(..))")
+    @Pointcut(value = "execution(* com.ssm.service.UserService.sayHello(..))")
     private void sayHelloPointCut(){}
 
     @Before(value = "MyAspect.sayHelloPointCut()")

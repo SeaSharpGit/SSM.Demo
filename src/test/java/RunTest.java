@@ -6,15 +6,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.function.IntConsumer;
 
 //创建项目时选择org.apache.archetypes:maven-archetype-webapp
 //整合JUnit4和Spring
@@ -22,8 +20,10 @@ import java.util.function.IntConsumer;
 @ContextConfiguration(locations = "classpath:spring-config.xml")
 public class RunTest {
 
-    @Autowired
+    @Resource
     private UserService userService;
+    @Resource
+    private UserMapper userMapper;
 
     /**
      * jdbc基本操作
@@ -60,13 +60,9 @@ public class RunTest {
      */
     @Test
     public void mybatis(){
-        ApplicationContext applicationContext=new FileSystemXmlApplicationContext("/src/main/resources/spring-config.xml");
-        UserMapper userMapper=applicationContext.getBean(UserMapper.class);
+        userService.sayHello();
         User user=userMapper.getById(30);
     }
-
-
-
 
 }
 
