@@ -14,7 +14,9 @@
           <element id="module-output" name="SSM.Demo" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aspects:5.0.7.RELEASE" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.13" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.15" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.6.1" />
           <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.4" />
