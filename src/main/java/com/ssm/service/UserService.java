@@ -18,6 +18,10 @@ public class UserService {
     @Resource
     private UserMapper userMapper;
 
+    public UserService(){
+        System.out.println("UserService实例化");
+    }
+
     public String sayHello() {
         userMapper.getById(30);
         userMapper.getById(30);
@@ -27,12 +31,12 @@ public class UserService {
 
     @PostConstruct
     public void init(){
-
+        System.out.println("UserService.init");
     }
 
     @PreDestroy
     public void destroy(){
-
+        System.out.println("UserService.destroy");
     }
 
 
